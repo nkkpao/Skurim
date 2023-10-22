@@ -11,6 +11,8 @@ jobs:
       matrix:
         targetPlatform:
           - StandaloneWindows64
+        projectPath:
+          - ./Skurim
 
     steps:
       - uses: actions/checkout@v3
@@ -29,6 +31,7 @@ jobs:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
+          projectPath: ${{ matrix.projectPath }}
       - uses: actions/upload-artifact@v3
         with:
           name: Build-${{ matrix.targetPlatform }}
