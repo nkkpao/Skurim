@@ -11,6 +11,8 @@ jobs:
       matrix:
         targetPlatform:
           - StandaloneWindows64
+        projectPath:
+          - ./Skurim
 
     steps:
       - uses: actions/checkout@v3
