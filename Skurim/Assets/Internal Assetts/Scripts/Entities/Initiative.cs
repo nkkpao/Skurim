@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class initiative : MonoBehaviour
+public class Initiative : MonoBehaviour
 {
-    public int initiative1 = 10;
+    public readonly int TargetInitiative = 10;
+    public int CurrInitiative { get; protected set; } = 0;
+
     private Slider slider;
 
     private void Awake()
@@ -13,16 +15,16 @@ public class initiative : MonoBehaviour
         slider = gameObject.GetComponent<Slider>();
     }
 
-    bool turn(bool action1)
+    bool NextTurn(bool isNextTurn) //переписать под observer
     {
-        initiative1 = (int)slider.value; 
-        if (initiative1 == 10 & action1) 
+        CurrInitiative = (int)slider.value; 
+        if (CurrInitiative == TargetInitiative & isNextTurn) 
         {
-            initiative1 = 0;
+            CurrInitiative = 0;
             return true;
         }
-        else if(initiative1 > 10)
-            initiative1 += 1;
+        else if(CurrInitiative > 10)
+            CurrInitiative += 1;
         return false;    
     }
 }
