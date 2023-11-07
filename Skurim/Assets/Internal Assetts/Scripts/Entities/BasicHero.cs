@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class BasicHero : BaseEntity
 {
-    //private Inventory _inventory;
+    //protected Inventory _inventory;
+    //protected int Level { get; set; }
+    //protected int CurXp { get; set; }
+    //protected int TargetXp { get; set; }
     public BasicHero(int maxHp = 20, int armor = 0, int speed = 2, int attackDmg = 4)
     {
         MaxHp = maxHp;
