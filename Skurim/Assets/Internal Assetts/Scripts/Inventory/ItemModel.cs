@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class ItemModel : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //у предмета помимо технических полей (айдишники и т.д.) должно быть описание
+    //реализацию брони и оружия пока не трогаем
 }
