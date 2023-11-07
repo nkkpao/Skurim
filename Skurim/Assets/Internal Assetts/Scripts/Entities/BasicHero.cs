@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class BasicHero : BaseEntity
 {
-    public BasicHero()
+    //private Inventory _inventory;
+    public BasicHero(int maxHp = 20, int armor = 0, int speed = 2, int attackDmg = 4)
     {
-        MaxHp = 20;
+        MaxHp = maxHp;
         CurHp = MaxHp;
-        Armor = 0;
-        Speed = 2;
-        AttackDamage = 4;
+        Armor = armor;
+        Speed = speed;
+        AttackDamage = attackDmg;
     }
 }
