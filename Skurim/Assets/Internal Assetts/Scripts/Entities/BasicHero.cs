@@ -8,7 +8,8 @@ public class BasicHero : BaseEntity
     //protected int Level { get; set; }
     //protected int CurXp { get; set; }
     //protected int TargetXp { get; set; }
-    public BasicHero(int maxHp = 20, int armor = 0, int speed = 2, int attackDmg = 4)
+
+    public void init(int maxHp = 10, int armor = 0, int speed = 2, int attackDmg = 5)
     {
         MaxHp = maxHp;
         CurHp = MaxHp;
@@ -16,4 +17,5 @@ public class BasicHero : BaseEntity
         Speed = speed;
         AttackDamage = attackDmg;
     }
+
 }

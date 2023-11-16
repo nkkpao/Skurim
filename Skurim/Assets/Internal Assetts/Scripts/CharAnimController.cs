@@ -12,8 +12,6 @@ public class CharAnimController : MonoBehaviour
     private Vector3 slideTargetPos;
     private Action onSlideComplete;
 
-    private Vector3 startPos;
-
     private enum State
     {
         Idle,
@@ -25,11 +23,6 @@ public class CharAnimController : MonoBehaviour
     {
         //animController = GetComponent<Animator>();
         state = State.Idle;
-    }
-
-    private void Start()
-    {
-        startPos = transform.position;
     }
 
     public void Setup(bool isPlayer)
@@ -53,7 +46,7 @@ public class CharAnimController : MonoBehaviour
             case State.Sliding:
                 float slideSpeed = 10f;
                 transform.position += (slideTargetPos - GetPosition()) * slideSpeed * Time.deltaTime;
-                float reachedDistance = 1;
+                float reachedDistance = 0.01f;
                 if (Vector3.Distance(GetPosition(), slideTargetPos) < reachedDistance)
                 {
                     //transform.position = slideTargetPos;
@@ -71,10 +64,9 @@ public class CharAnimController : MonoBehaviour
         return transform.position;
     }
 
-    public void AttackTurn(CharAnimController targetChar, Action onAttackComplete)
+    public void AttackTurn(CharAnimController targetChar, Vector3 startPos, Action onAttackComplete)
     {
 
-        Vector3 startingPos = startPos;
         Vector3 slideTargetPos = targetChar.GetPosition() +(GetPosition() - targetChar.GetPosition()).normalized*2;
         
         //attack animation
@@ -83,7 +75,7 @@ public class CharAnimController : MonoBehaviour
         {
             state = State.Busy;
             Vector3 attackDir = (targetChar.GetPosition() - GetPosition()).normalized;
-            SlideToPos(startingPos, () =>
+            SlideToPos(startPos, () =>
             {
                 state = State.Idle;
                 onAttackComplete();

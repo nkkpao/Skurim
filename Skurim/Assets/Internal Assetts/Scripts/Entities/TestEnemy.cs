@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TestEnemy : BaseEntity
 {
-    public TestEnemy(int maxHp = 20, int armor = 0, int speed = 2, int attackDmg = 4)
+    public void init(int maxHp = 10, int armor = 0, int speed = 2, int attackDmg = 4)
     {
         MaxHp = maxHp;
         CurHp = MaxHp;
