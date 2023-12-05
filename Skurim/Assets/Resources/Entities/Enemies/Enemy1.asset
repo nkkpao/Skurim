@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Enemy1
   m_EditorClassIdentifier: 
   Name: Enemy1
-  Faction: 1
-  EntityPrefab: {fileID: 7453557893315318026, guid: 313eafa3fd5d0ec48a067cf9687131ec, type: 3}
+  faction: 1
+  entityPrefab: {fileID: 7804903609519987322, guid: 313eafa3fd5d0ec48a067cf9687131ec, type: 3}
+  ATBGaugePF: {fileID: 2776880852698107634, guid: f65fdb0a2c3c7f940948ba4ce377699d, type: 3}
+  hpGaugePF: {fileID: 3666503733454640120, guid: 1ecf16a016f92204387dfc549b6e685b, type: 3}

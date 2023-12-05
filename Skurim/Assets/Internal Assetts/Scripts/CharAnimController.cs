@@ -1,18 +1,14 @@
-using System;   
-using System.Collections;
-using System.Collections.Generic;
-using System.Net.Sockets;
+using System;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class CharAnimController : MonoBehaviour
 {
     //private Animator animController;
-    private State state;
+    public State state { get; private set; }
     private Vector3 slideTargetPos;
     private Action onSlideComplete;
 
-    private enum State
+    public enum State
     {
         Idle,
         Sliding,
@@ -27,7 +23,7 @@ public class CharAnimController : MonoBehaviour
 
     public void Setup(bool isPlayer)
     {
-        if(isPlayer) 
+        if (isPlayer)
         {
             //hero animations 
         }
@@ -37,9 +33,10 @@ public class CharAnimController : MonoBehaviour
         }
     }
 
+
     private void Update()
     {
-        switch(state)
+        switch (state)
         {
             case State.Idle:
                 break;
@@ -64,24 +61,27 @@ public class CharAnimController : MonoBehaviour
         return transform.position;
     }
 
-    public void AttackTurn(CharAnimController targetChar, Vector3 startPos, Action onAttackComplete)
+    public void AttackTurn(CharAnimController targetChar, Vector3 startPos, Action OnSlide, Action onAttackComplete)
     {
 
-        Vector3 slideTargetPos = targetChar.GetPosition() +(GetPosition() - targetChar.GetPosition()).normalized*2;
-        
-        //attack animation
+        Vector3 slideTargetPos = targetChar.GetPosition() + (GetPosition() - targetChar.GetPosition()).normalized * 2;
 
+        //attack animation
         SlideToPos(slideTargetPos, () =>
         {
+
             state = State.Busy;
             Vector3 attackDir = (targetChar.GetPosition() - GetPosition()).normalized;
+            OnSlide();
             SlideToPos(startPos, () =>
             {
                 state = State.Idle;
                 onAttackComplete();
+
             });
-            
+
         });
+
     }
 
     private void SlideToPos(Vector3 slideTargetPos, Action onSlideComplete)

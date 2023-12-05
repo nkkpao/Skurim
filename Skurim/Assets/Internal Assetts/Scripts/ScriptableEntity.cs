@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New entity", menuName = "Scriptable entity")]
@@ -7,8 +5,10 @@ using UnityEngine;
 public class ScriptableEntity : ScriptableObject
 {
     public string Name;
-    public Faction Faction;
-    public BaseEntity EntityPrefab;
+    public Faction faction;
+    public GameObject entityPrefab;
+    public GameObject ATBGaugePF;
+    public GameObject hpGaugePF;
     //public int MaxHp, armor, speed, attackDmg;
 }
 

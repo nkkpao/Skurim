@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System;
 
-public class TestEnemy : BaseEntity
+[Serializable]
+public class BasicEnemy : BaseEntity
 {
     public void init(int maxHp = 10, int armor = 0, int speed = 2, int attackDmg = 4)
     {
